@@ -1,4 +1,9 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using QRBankPayAPI.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<QRBankPayDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("QRBankPayDbContext") ?? throw new InvalidOperationException("Connection string 'QRBankPayDbContext' not found.")));
 
 // Add services to the container.
 
