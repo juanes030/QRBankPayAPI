@@ -20,22 +20,22 @@ namespace QRBankPayAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Client>>> GetClient()
         {
-          if (_context.Client == null)
+          if (_context.Clients == null)
           {
               return NotFound();
           }
-            return await _context.Client.ToListAsync();
+            return await _context.Clients.ToListAsync();
         }
 
         // GET: api/Clients/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Client>> GetClient(long id)
         {
-          if (_context.Client == null)
+          if (_context.Clients == null)
           {
               return NotFound();
           }
-            var client = await _context.Client.FindAsync(id);
+            var client = await _context.Clients.FindAsync(id);
 
             if (client == null)
             {
@@ -81,11 +81,11 @@ namespace QRBankPayAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Client>> PostClient(Client client)
         {
-          if (_context.Client == null)
+          if (_context.Clients == null)
           {
               return Problem("Entity set 'QRBankPayDbContext.Client'  is null.");
           }
-            _context.Client.Add(client);
+            _context.Clients.Add(client);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetClient", new { id = client.Id }, client);
@@ -95,17 +95,17 @@ namespace QRBankPayAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteClient(long id)
         {
-            if (_context.Client == null)
+            if (_context.Clients == null)
             {
                 return NotFound();
             }
-            var client = await _context.Client.FindAsync(id);
+            var client = await _context.Clients.FindAsync(id);
             if (client == null)
             {
                 return NotFound();
             }
 
-            _context.Client.Remove(client);
+            _context.Clients.Remove(client);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -113,7 +113,7 @@ namespace QRBankPayAPI.Controllers
 
         private bool ClientExists(long id)
         {
-            return (_context.Client?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Clients?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

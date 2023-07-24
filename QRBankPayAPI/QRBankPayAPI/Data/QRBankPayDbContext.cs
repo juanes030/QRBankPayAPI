@@ -14,6 +14,6 @@ namespace QRBankPayAPI.Data
         {
         }
 
-        public DbSet<QRBankPayAPI.Data.Models.Client> Client { get; set; } = default!;
+        public DbSet<QRBankPayAPI.Data.Models.Client> Clients { get; set; } = default!;
     }
 }
