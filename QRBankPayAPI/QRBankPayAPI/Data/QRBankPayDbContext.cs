@@ -15,5 +15,11 @@ namespace QRBankPayAPI.Data
         }
 
         public DbSet<QRBankPayAPI.Data.Models.Client> Clients { get; set; } = default!;
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Client>().ToTable(nameof(Client));
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
