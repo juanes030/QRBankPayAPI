@@ -40,6 +40,28 @@ namespace QRBankPayAPI.Data
                 this.AddUser("GuestUser", "123", 3);
                 await this.context.SaveChangesAsync();
             }
+
+            if (!this.context.Transactions.Any())
+            {
+                this.AddTransaction("PAGO TARJETA CREDITO","21/01/2023","$ 80.563.00");
+                this.AddTransaction("EXITO", "01/05/2023", "$ 120.563.00");
+                this.AddTransaction("PAGO NOMINA", "15/02/2023", "$ 5.000.000.00");
+                this.AddTransaction("CREPES Y WAFFLES", "24/12/2023", "$ 90.000.00");
+                this.AddTransaction("LOS MOLINOS", "08/08/2023", "$ 400.000.00");
+                this.AddTransaction("TEATRO CINECOLOMBIA", "10/11/2023", "$ 45.500.00");
+                this.AddTransaction("PAGO NOMINA", "30/04/2023", "$ 6.000.000.00");
+                await this.context.SaveChangesAsync();
+            }
+        }
+
+        private void AddTransaction(string description, string date, string value)
+        {
+            this.context.Transactions.Add(new Models.Transaction
+            {
+                Description = description,
+                Date = date,
+                Value = value
+            });
         }
 
         private void AddClient(string name)
