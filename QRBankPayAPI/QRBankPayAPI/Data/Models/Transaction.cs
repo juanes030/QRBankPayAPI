@@ -14,5 +14,6 @@ namespace QRBankPayAPI.Data.Models
         public string Date { get; set; }
         [Required]
         public string Value { get; set; }
+        public string CuentaOrigen { get; set; }
     }
 }

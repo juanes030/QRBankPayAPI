@@ -14,6 +14,7 @@ namespace QRBankPayAPI.Data
         public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<SourceBankAccount> SourceBankAccount { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -21,6 +22,7 @@ namespace QRBankPayAPI.Data
             modelBuilder.Entity<UserRole>().ToTable(nameof(UserRole));
             modelBuilder.Entity<User>().ToTable(nameof(User));
             modelBuilder.Entity<Transaction>().ToTable(nameof(Transaction));
+            modelBuilder.Entity<SourceBankAccount>().ToTable(nameof(SourceBankAccount));
 
             base.OnModelCreating(modelBuilder);
         }

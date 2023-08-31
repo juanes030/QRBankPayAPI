@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QRBankPayAPI.Data;
 
@@ -10,9 +11,11 @@ using QRBankPayAPI.Data;
 namespace QRBankPayAPI.Migrations
 {
     [DbContext(typeof(QRBankPayDbContext))]
-    partial class QRBankPayDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230826011506_ModificacionCuenta")]
+    partial class ModificacionCuenta
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -66,7 +69,7 @@ namespace QRBankPayAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("SourceBankAccount", (string)null);
+                    b.ToTable("SourceBankAccount");
                 });
 
             modelBuilder.Entity("QRBankPayAPI.Data.Models.Transaction", b =>

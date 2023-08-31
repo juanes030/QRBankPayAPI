@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QRBankPayAPI.Data;
 
@@ -10,9 +11,11 @@ using QRBankPayAPI.Data;
 namespace QRBankPayAPI.Migrations
 {
     [DbContext(typeof(QRBankPayDbContext))]
-    partial class QRBankPayDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230826003547_Modificacion")]
+    partial class Modificacion
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -46,27 +49,6 @@ namespace QRBankPayAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Client", (string)null);
-                });
-
-            modelBuilder.Entity("QRBankPayAPI.Data.Models.SourceBankAccount", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<string>("Dna")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SourceAccount")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("SourceBankAccount", (string)null);
                 });
 
             modelBuilder.Entity("QRBankPayAPI.Data.Models.Transaction", b =>
